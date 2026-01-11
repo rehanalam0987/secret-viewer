@@ -1,0 +1,41 @@
+* { box-sizing: border-box; font-family: system-ui, sans-serif; }
+
+body {
+  margin: 0;
+  background: #0b0f14;
+  color: #e6edf3;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  max-width: 520px;
+  padding: 24px;
+  background: #111826;
+  border-radius: 14px;
+}
+
+textarea, input, button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #233;
+  background: #0b1220;
+  color: #fff;
+}
+
+button {
+  cursor: pointer;
+  background: #2563eb;
+  border: none;
+}
+
+.hidden { display: none; }
+
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}

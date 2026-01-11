@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>One-Time Secret</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+  <h1>🔐 One-Time Secret</h1>
+  <p class="tag">Link open karo → secret dikhe → reload = gone</p>
+
+  <textarea id="secretInput" placeholder="Type your secret here..."></textarea>
+
+  <button id="createBtn">Generate Link</button>
+
+  <div id="result" class="hidden">
+    <input id="linkOutput" readonly />
+    <button id="copyBtn">Copy</button>
+  </div>
+
+  <div id="viewer" class="hidden">
+    <h2>🔓 Secret Message</h2>
+    <pre id="secretView"></pre>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
