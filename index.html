@@ -2,30 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>One-Time Secret</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Secret Message</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #0b0f14;
+      color: #e6edf3;
+      font-family: system-ui, sans-serif;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 600px;
+      padding: 24px;
+      background: #111826;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.5);
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    pre {
+      margin-top: 12px;
+      padding: 14px;
+      background: #0b1220;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .note {
+      margin-top: 14px;
+      opacity: 0.6;
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="app">
-  <h1>🔐 One-Time Secret</h1>
-  <p class="tag">Link open karo → secret dikhe → reload = gone</p>
-
-  <textarea id="secretInput" placeholder="Type your secret here..."></textarea>
-
-  <button id="createBtn">Generate Link</button>
-
-  <div id="result" class="hidden">
-    <input id="linkOutput" readonly />
-    <button id="copyBtn">Copy</button>
+  <div class="box">
+    <h1>🔐 Secret Message</h1>
+    <pre id="msg">Loading...</pre>
+    <div class="note">This message was shared securely.</div>
   </div>
 
-  <div id="viewer" class="hidden">
-    <h2>🔓 Secret Message</h2>
-    <pre id="secretView"></pre>
-  </div>
-</div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const msgBox = document.getElementById("msg");
 
-<script src="script.js"></script>
+    if (!params.has("s")) {
+      msgBox.textContent = "❌ No secret found in link";
+    } else {
+      try {
+        const decoded = decodeURIComponent(atob(params.get("s")));
+        msgBox.textContent = decoded;
+      } catch (e) {
+        msgBox.textContent = "❌ Invalid or broken secret link";
+      }
+    }
+  </script>
+
 </body>
 </html>
+
